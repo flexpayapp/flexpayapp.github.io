@@ -1,0 +1,100 @@
+/*Bootstap Overrides*/
+
+/*Index.html + Inputs.html*/
+#bootstrap-overrides body {
+	font-family: Lato, sans-serif;
+}
+
+#bootstrap-overrides .voltar-button,.ajuda-button, .info-button,#botao-taxa-juros,.botao-parcela{
+    color: #28a745;
+}
+
+#bootstrap-overrides .logo{
+    color:black;
+    font-weight: bold;
+}
+#bootstrap-overrides .form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #28a745;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(40,167,69,.25);
+}
+
+#bootstrap-overrides .card-body{
+    padding:0;
+}
+
+#atualiza-parcela:focus{
+    background-color: white;
+    color: #28a745;
+}
+#calculo:active{
+    border-color: white
+    background-color: #28a745;
+    color:white;
+}
+#tab_logic {
+    margin-bottom: 0px;
+}
+
+.prazo-valor {
+	color: #036704;
+	font-weight: bold;
+}
+
+.diferenca-valor, .taxa-valor {
+	color: #A40303;
+	font-weight: bold;
+}
+.text-ou {
+	padding-left: 0.46875em;
+	padding-right: 0.46875em;
+}
+
+/*Remove input indicators*/
+input[type=date] {
+    -moz-appearance:textfield;
+}
+ 
+input[type=date]::-webkit-inner-spin-button, 
+input[type=date]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    orientation: "bottom auto";
+    appearance: none;
+    margin: 0; 
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+ 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    orientation: "bottom auto";
+    appearance: none;
+    margin: 0; 
+}
+
+@media(max-width: 575.98px) {
+    .table-number-header{
+        display: none;
+    }
+    .table-number-line{
+        display: none;
+    }
+}
+@media(max-width: 575px){
+	.resultado{
+		border-bottom: 1px solid #6c757d;
+	}
+}
+
+
+
+
+
+

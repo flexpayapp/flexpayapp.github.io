@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Flex Pay</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" content="#8EE65D"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="images/icon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="images/icon.ico" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.min.css">
+        <link rel="stylesheet" type="text/css" href="css/answer.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="manifest" href="manifest.json">
+        <script type="text/javascript">
+
+        function definirData(){
+          document.getElementById("data").value = new Date().toISOString().slice(0,10);
+        }
+        </script>
+    </head>
+    <body id="bootstrap-overrides" onload="definirData()">
+        <div class="container mb-4">
+            <nav class="navbar clearfix px-sm-0 border-bottom border-success">
+                    <a class="nav-link float-left" href="index.html">
+                        <p class="voltar-button">Voltar</p>
+                    </a>
+                    <a class="navbar-brand mx-auto" href="#">
+                        <p class="logo">Flex Pay</p>
+                    </a>
+                    <a class="nav-link float-left" data-toggle="modal" data-target="#modal-ajuda1" href="#">
+                        <p class="ajuda-button">Ajuda</p>
+                    </a>
+            </nav>
+        </div>
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-12 col-md-4 mb-4 float-left">
+                    <div class="input-group input-box">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">R$</div>
+                        </div>
+                        <input class="input-field form-control" type="number" id="preco-inicial" required="true" placeholder="Preço à vista" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4  mx-auto">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <img src="images/calendar.png"/>
+                            </div>
+                        </div>
+                        <input class="form-control here" aria-label="Large" type="date" id="data" required="true" placeholder="Data da Compra" />
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-4 float-right">
+                    <div class="input-group input-box">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">#</div>
+                        </div>
+                        <input class="input-field form-control" type="number" id="numeroparcelas" required="true" placeholder="Número de parcelas" />
+                        <div class="input-group-append">
+                            <button type="button" id="atualiza-parcela" class="btn btn-outline-success">Atualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4 text-center">
+                <div class="col-12">
+                    <button type="button" id="copiar-parcelas" class="btn btn-link" hidden = "true">Repetir valor</button>
+                    <button type="button" id="exibir-parcelas" class="btn btn-link" data-toggle="collapse" href="#tabela-parcelas" role="button" aria-expanded="false" aria-controls="tabela-parcelas">Exibir/Esconder Parcelas</button>
+                </div>
+            </div>
+            <div class="row mb-4 text-center">
+                <div class="col-12">
+                    <button type="button" id="calculo-juros" class="btn btn-outline-success">Calcular</button>
+                </div>
+            </div>
+
+            <div class="collapse" id="tabela-parcelas">
+              <div class="card card-body mb-4">
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-hover" id="tab_logic">
+                                <thead>
+                                    <tr>
+                                        <th class="table-number-header text-center">#</th>
+                                        <th class="text-center">Valor</th>
+                                        <th class="text-center">Vencimento</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="parcelas">
+                                    <tr id='addr0'>
+                                        <td class="table-number-line text-center">1</td>
+                                        <td class="table-valor-line">
+                                        <input id="parcela0" type="number" name='name'  placeholder='Valor da 1ª' class="form-control text-center"/>
+                                        </td>
+                                        <td class="text-center table-data-line">
+                                        <input class="text-center form-control" id="date0" name="date" type="date" />
+                                        </td>
+                                    </tr>
+                                    <tr id='addr1'></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-none container" id="answer">	
+	        	<div class="row clearfix">
+	        		<div class="col-sm-6 text-center">
+	        			<div class=" resultado">
+		        			<p class="prazo-texto">Total a Prazo</p>
+		        			<label id="tprazo" class="prazo-valor">R$100.00</label>
+		        			<p class="prazo-texto">Diferença (em reais)</p>
+		        			<label id="juros" class="diferenca-valor">R$50.00</label>
+		        			<p class="prazo-texto">Taxa de Juros</p>
+		        			<label id="porcentagem" class="taxa-valor">10%</label>
+	        			</div>
+	        		</div>
+	        		<div class="divisoria1"></div>
+	        		<div class="col-sm-6 text-center equivalencias">
+		        		<div class="row clearfix" id="equivalencias-section">
+		        			<div class="col-12 equivalencias-texto-box text-center">
+		            			<p class="equivalencias-texto">Isso é equivalente à:</p>
+		        			</div>
+		        			<div class="col-12 images">
+			            		<div class="equivs row clearfix pl-3 pl-lg-5">
+			            			<div class="col-3 px-0" id="span100" hidden="true">
+			                			<img class="img" id = "img100" src="" /><br>
+			                			<span id="legenda100" class="legendas"></span>
+			            			</div>
+			            			<p class="text-ou text-center" id="texto100">ou</p>
+			            			<div class="col-3 px-0" id="span50" hidden="true">
+			                			<img class="img" id = "img50" src="" /><br>
+			                			<span id="legenda50" class="legendas"></span>
+			            			</div>
+			            			<p class="text-ou text-center" id="texto50">ou</p>
+			            			<div class="col-3 px-0" id="span20" hidden="true">
+			                			<img class="img" id = "img20" src="" /><br>
+			                			<span id="legenda20" class="legendas"></span>
+			            			</div>
+			            		</div>
+			            	</div>
+			            </div>
+		            </div>
+		        </div>
+       		</div>
+
+        </div>
+
+        <!-- Modal de Ajuda -->
+        <div class="modal fade" id="modal-ajuda1" tabindex="-1" role="dialog" aria-labelledby="modal-ajuda1-label" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modal-ajuda1-label">Ajuda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+              	<h3 style="font-weight: bold">Como Utilizar</h2>
+              	<p><b>1.</b> Preencha os campos com o Preço à vista do produto, a Data da Venda (por padrão é o dia atual), e o Número de Parcelas.</p>
+              	<p><b>2.</b> Clique em "Atualizar" para atualizar o Número de Parcelas.</p>
+              	<p><b>3.</b> Para cada Parcela digite o Valor da Parcela e a Data de Vencimento. Clique em "Repetir valor" para repetir o valor da primeira parcela.</p>
+              	<p><b>4.</b> Clique em "Calcular" para exibir o resultado.</p>
+                
+              	<h3 style="font-weight: bold">Legenda</h2>
+                <p><b>- Preço à vista:</b> É o preço que será pago caso não haja parcelamento.</p>
+                <p><b>- Data da venda:</b> A data na qual a venda foi feita.</p>
+                <p><b>- Número de Parcelas:</b> Quantidade de prestações a serem pagas.</p>
+                <p><b>- Total a Prazo:</b> Valor total pago após o pagamento de todas as parcelas.</p>
+                <p><b>- Diferença:</b> Diferença do Total a Prazo com o Preço à vista.</p>
+                <p><b>- Taxa de juros:</b> Porcentagem aplicada sobre cada parcela do produto.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script type="text/javascript" src="js/jquery-3.3.1.slim.min.js"></script>
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
+        <script src="js/atualiza-parcelas.js"></script>
+        <script src="js/app-juros.js"></script>
+        <script src="js/app-answer.js"></script>
+    </body>
+</html>

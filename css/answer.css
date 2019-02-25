@@ -1,0 +1,92 @@
+#tprazo, #juros, #porcentagem {
+	font-family: Lato, sans-serif;
+}
+
+#bootstrap-overrides .voltar-button,.ajuda-button{
+    color: #28a745;
+}
+
+#bootstrap-overrides .logo{
+    color:black;
+    font-weight: bold;
+}
+
+/*Resultado*/
+.resultado {
+	text-align: center;
+}
+
+.total-prazo, .diferenca, .taxa-juros  {
+	padding: 1.25em;
+	font-weight: bold;
+}
+
+.prazo-valor, .diferenca-valor, .taxa-valor {
+	padding: 10px;
+	font-size: 2.5em;
+}
+
+.prazo-texto, .diferenca-texto, .taxa-texto {
+	font-weight: bold;
+	font-size: 1.25em;
+}
+
+.prazo-valor {
+	color: #036704;
+}
+
+.diferenca-valor, .taxa-valor {
+	color: #A40303;
+}
+
+/*Alternativas*/
+.divisoria{
+	text-align: center;
+	height: 0.0625em;
+	background-color: #969FAA;
+	width: 17em;
+	margin: auto;
+
+}
+
+.equivalencias-texto-box {
+	padding: 20px;
+}
+.equivalencias-texto {
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.25em;
+}
+.legendas{
+	font-size: 1em;
+	font-weight: bold;
+	display: block;
+	text-align:center;	
+	
+}
+.img {
+	width:4em;
+	height: 4em;
+}
+@-webkit-keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; } 
+	}
+	@-moz-keyframes fadeIn {
+	0% { opacity: 0;}
+	100% { opacity: 1; }
+	}
+	@-o-keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+	}
+	@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+    }
+.fadeIn {
+    -webkit-animation: fadeIn 1s ease-in-out;
+    -moz-animation: fadeIn 1s ease-in-out;
+    -o-animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
+}
